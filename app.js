@@ -19,13 +19,13 @@ function createNewCard(){
 
   const projectCardTitleInput = document.createElement('input');
   projectCardTitleInput.type = 'text';
-  //projectCardTitleInput.setAttribute('readonly', true);
-  projectCardTitleInput.placeholder = 'New Project Card';
+  projectCardTitleInput.placeholder = 'Click to add text ->';
   projectCardTitle.appendChild(projectCardTitleInput);
+  projectCardTitleInput.setAttribute('readonly', true);
 
   const projectCardDeleteBtn = document.createElement('div');
   projectCardDeleteBtn.classList.add('project-card-delete-btn');
-  // projectCardDeleteBtn.innerText = '-';
+  projectCardDeleteBtn.innerText = '-';
   projectCardTitle.appendChild(projectCardDeleteBtn);
 
   const projectCardEditBtn = document.createElement('div');
