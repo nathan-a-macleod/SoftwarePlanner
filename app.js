@@ -19,16 +19,25 @@ function createNewCard(){
 
   const projectCardTitleInput = document.createElement('input');
   projectCardTitleInput.type = 'text';
-  projectCardTitleInput.placeholder = 'Enter a Title...';
+  //projectCardTitleInput.setAttribute('readonly', true);
+  projectCardTitleInput.placeholder = 'New Project Card';
   projectCardTitle.appendChild(projectCardTitleInput);
 
   const projectCardDeleteBtn = document.createElement('div');
   projectCardDeleteBtn.classList.add('project-card-delete-btn');
-  projectCardDeleteBtn.innerText = '-';
+  // projectCardDeleteBtn.innerText = '-';
   projectCardTitle.appendChild(projectCardDeleteBtn);
 
+  const projectCardEditBtn = document.createElement('div');
+  projectCardEditBtn.classList.add('project-card-edit-btn');
+  projectCardTitle.appendChild(projectCardEditBtn);
+
+  const projectCardConfirmBtn = document.createElement('div');
+  projectCardConfirmBtn.classList.add('project-card-edit-confirm-btn');
+  projectCardConfirmBtn.innerText = 'Confirm';
+  projectCardTitle.appendChild(projectCardConfirmBtn);
+
   const projectCardBody = document.createElement('div');
-  projectCardBody.contentEditable = 'true';
   projectCardBody.classList.add('project-card-body');
   projectCardContainer.appendChild(projectCardBody);
 	//make the text color black
@@ -42,4 +51,24 @@ function createNewCard(){
   });
   projectCardContainer.classList.add('card-animate');
   cardsContainer.appendChild(projectCardContainer);
+
+  // User Clicks Edit Button
+  projectCardEditBtn.addEventListener('click', ()=> {
+    projectCardTitleInput.removeAttribute('readonly');
+    projectCardTitleInput.classList.add('editable');
+    projectCardBody.contentEditable = 'true';
+    projectCardBody.classList.add('editable');
+    projectCardEditBtn.style.opacity = 0.2;
+    projectCardConfirmBtn.style.opacity = 1;
+  })
+
+  // User Confirms Edits
+  projectCardConfirmBtn.addEventListener('click', () => {
+    projectCardTitleInput.setAttribute('readonly', true);
+    projectCardTitleInput.classList.remove('editable');
+    projectCardBody.contentEditable = 'false';
+    projectCardBody.classList.remove('editable');
+    projectCardEditBtn.style.opacity = 1;
+    projectCardConfirmBtn.style.opacity = 0;
+  })
 }
