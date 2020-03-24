@@ -19,7 +19,7 @@ function createNewCard(){
 
   const projectCardTitleInput = document.createElement('input');
   projectCardTitleInput.type = 'text';
-  projectCardTitleInput.placeholder = 'New Project Card';
+  projectCardTitleInput.placeholder = 'Enter a Title...';
   projectCardTitle.appendChild(projectCardTitleInput);
 
   const projectCardDeleteBtn = document.createElement('div');
@@ -31,11 +31,14 @@ function createNewCard(){
   projectCardBody.contentEditable = 'true';
   projectCardBody.classList.add('project-card-body');
   projectCardContainer.appendChild(projectCardBody);
+	//make the text color black
   
   // User Clicks Delete Card Button
   projectCardDeleteBtn.addEventListener('click', () => {
-    cardsContainer.removeChild(projectCardContainer);
-    placeholderCard.classList.toggle('hide-placeholder');
+    if(confirm("Warning: You are about to delete this project card and everything inside it. Press OK to proceed, or cancel to cancel.")){
+      cardsContainer.removeChild(projectCardContainer);
+      placeholderCard.classList.toggle('hide-placeholder');
+    }
   });
   projectCardContainer.classList.add('card-animate');
   cardsContainer.appendChild(projectCardContainer);
