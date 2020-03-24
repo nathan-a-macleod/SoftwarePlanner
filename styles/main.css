@@ -134,7 +134,9 @@ body {
 .editable {
   color: rgb(20,20,20) !important;
   border: 2px solid rgb(120, 235, 250) !important;
+	border-radius: 3px;
   background-color: rgb(242, 255, 255) !important;
+	width: 60%;
 }
 
 .cards-container {
@@ -265,6 +267,7 @@ body {
   transition: all 0.3s ease;
   box-shadow: inset 1px 2px 4px rgba(20,20,20,0.3);
 }
+
 .add-card-btn:hover {
   background-color: #ddd;
 }
