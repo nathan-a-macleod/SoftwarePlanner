@@ -130,17 +130,23 @@ body {
   z-index: -100;
 }
 
+.editable {
+  color: rgb(20,20,20) !important;
+  border: 2px solid rgb(120, 235, 250) !important;
+  background-color: rgb(242, 255, 255) !important;
+}
+
 .cards-container {
   position: relative;
 }
 
 /* Project Card */
 .project-card-container {
-  width: 350px;
+  width: 450px;
   display: grid;
   margin: 20px 20px;
   position: relative;
-  height: 500px;
+  height: 550px;
   grid-template-columns: 1fr;
   grid-template-rows: 40px auto;
   box-shadow: 1px 2px 4px rgba(20,20,20,0.3);
@@ -152,23 +158,52 @@ body {
 .project-card-delete-btn {
   position: absolute;
   right: 0;
-  top: 0;
-  background-color: #922e2e;
-  text-align: right;
-  padding: 8px 8px;
-  color: #fff;
+  top: 50%;
+  width: 30px;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  background-image: url('../images/svg/trashcan.svg');
+  background-color: var(--main-red-color);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.project-card-delete-btn:hover {
-  background-color: #662020;
+.project-card-edit-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  right: 40px;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+  transform: translate(-50%, -50%);
+  background-image: url('../images/svg/edit.svg');
+  background-color: var(--main-red-color);
+}
+
+.project-card-edit-confirm-btn {
+  position: absolute;
+  height: 30px;
+  top: 50%;
+  right: 50px;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 5px;
+  opacity: 0;
+  background-color: var(--main-blue-color);
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.project-card-edit-confirm-btn:hover {
+  background-color: rgb(37, 91, 141);
 }
 
 .project-card-title {
-  padding: 10px 15px;
+  padding: 2px 15px;
   font-size: 2rem;
   width: 100%;
+  position: relative;
   overflow: hidden;
   background-color: var(--main-red-color);
 }
@@ -177,7 +212,9 @@ body {
   color: var(--main-font-color);
   font-size: 2rem;
   border: none;
+  padding: 4px 8px;
   outline: none;
+  transition: all 0.4s ease;
 }
 .project-card-body {
   width: 95%;
@@ -186,6 +223,8 @@ body {
   overflow-y: auto;
   line-height: 1.2;
   padding: 10px;
+  outline: none;
+  transition: all 0.4s ease;
   box-shadow: inset 1px 2px 4px rgba(20,20,20,0.3);
   background-color: var(--card-body-color);
   color: var(--secondary-font-color);
