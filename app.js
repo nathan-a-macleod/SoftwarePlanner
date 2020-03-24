@@ -24,7 +24,7 @@ function createNewCard(){
 
   const projectCardDeleteBtn = document.createElement('div');
   projectCardDeleteBtn.classList.add('project-card-delete-btn');
-  projectCardDeleteBtn.innerText = 'X';
+  projectCardDeleteBtn.innerText = '-';
   projectCardTitle.appendChild(projectCardDeleteBtn);
 
   const projectCardBody = document.createElement('div');
