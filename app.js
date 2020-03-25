@@ -21,11 +21,11 @@ function createNewCard(){
   projectCardTitleInput.type = 'text';
   projectCardTitleInput.placeholder = 'Click to add text ->';
   projectCardTitle.appendChild(projectCardTitleInput);
-  projectCardTitleInput.setAttribute('readonly', true);
+  projectCardTitleInput.classList.add('editable');
 
   const projectCardDeleteBtn = document.createElement('div');
   projectCardDeleteBtn.classList.add('project-card-delete-btn');
-  projectCardDeleteBtn.innerText = '-';
+  // projectCardDeleteBtn.innerText = '-'; << No need for this, we have the icon
   projectCardTitle.appendChild(projectCardDeleteBtn);
 
   const projectCardEditBtn = document.createElement('div');
@@ -38,9 +38,11 @@ function createNewCard(){
   projectCardTitle.appendChild(projectCardConfirmBtn);
 
   const projectCardBody = document.createElement('div');
-  projectCardBody.classList.add('project-card-body');
+  projectCardBody.classList.add('project-card-body', 'editable');
+  projectCardBody.contentEditable = 'true';
   projectCardContainer.appendChild(projectCardBody);
-	//make the text color black
+  projectCardEditBtn.style.opacity = 0.2;
+  projectCardConfirmBtn.style.opacity = 1;
   
   // User Clicks Delete Card Button
   projectCardDeleteBtn.addEventListener('click', () => {
@@ -65,9 +67,9 @@ function createNewCard(){
   // User Confirms Edits
   projectCardConfirmBtn.addEventListener('click', () => {
     projectCardTitleInput.setAttribute('readonly', true);
-    projectCardTitleInput.classList.remove('editable');
+    projectCardTitleInput.classList.toggle('editable');
     projectCardBody.contentEditable = 'false';
-    projectCardBody.classList.remove('editable');
+    projectCardBody.classList.toggle('editable');
     projectCardEditBtn.style.opacity = 1;
     projectCardConfirmBtn.style.opacity = 0;
   })
