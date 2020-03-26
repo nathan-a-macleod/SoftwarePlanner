@@ -45,12 +45,22 @@ function createNewCard(){
   projectCardEditBtn.style.opacity = 0.2;
   projectCardConfirmBtn.style.opacity = 1;
 	
-	const projectCardNewBlock = document.createElement('div');
+  const projectCardNewBlock = document.createElement('div');
   projectCardNewBlock.classList.add('add-project-block');
   projectCardContainer.appendChild(projectCardNewBlock);
-	const projectCardNewBlockText = document.createElement('p');
-	projectCardNewBlockText.innerHTML = '+';
+  const projectCardNewBlockText = document.createElement('p');
+  projectCardNewBlockText.innerHTML = '+';
   projectCardNewBlock.appendChild(projectCardNewBlockText);
+  const addTextButton = document.createElement('button');
+  addTextButton.classList.add('add-text-button');
+  projectCardNewBlock.appendChild(addTextButton);
+  addTextButton.innerHTML = 'Click to add more text...';
+	addTextButton.style.visibility = "hidden";
+	const addImageButton = document.createElement('button');
+	addImageButton.classList.add('add-image-button');
+	projectCardNewBlock.appendChild(addImageButton);
+	addImageButton.innerHTML = 'Click to add an image...';
+	addImageButton.style.visibility = "hidden";
   
   // User Clicks Delete Card Button
   projectCardDeleteBtn.addEventListener('click', () => {
@@ -73,14 +83,16 @@ function createNewCard(){
     projectCardConfirmBtn.style.opacity = 0;
 		
 		projectCardNewBlock.classList.add('add-project-block-clicked');
-		//Then do other stuff like open up a menu where the user can click to add 'body text' or 'image'
+		//Display a menu where the user can click to add 'body text' or 'image'
+		addTextButton.style.visibility = "visible";
+		addImageButton.style.visibility = "visible";
   })
 
   // User Clicks Edit Button
   projectCardEditBtn.addEventListener('click', ()=> {
     projectCardTitleInput.removeAttribute('readonly');
     projectCardTitleInput.classList.add('editable');
-		projectCardTitleInput.autofocus = true;
+		projectCardTitleInput.focus();
     projectCardBody.contentEditable = 'true';
     projectCardBody.classList.add('editable');
     projectCardEditBtn.style.opacity = 0.2;
