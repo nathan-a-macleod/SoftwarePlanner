@@ -38,12 +38,19 @@ function createNewCard(){
   projectCardConfirmBtn.innerText = 'Confirm';
   projectCardTitle.appendChild(projectCardConfirmBtn);
 
-  const projectCardBody = document.createElement('div');
+  const projectCardBody = document.createElement('div'); // I can't work out a way to add placeholder text to a content-editable div...
   projectCardBody.classList.add('project-card-body', 'editable');
   projectCardBody.contentEditable = 'true';
   projectCardContainer.appendChild(projectCardBody);
   projectCardEditBtn.style.opacity = 0.2;
   projectCardConfirmBtn.style.opacity = 1;
+	
+	const projectCardNewBlock = document.createElement('div');
+  projectCardNewBlock.classList.add('add-project-block');
+  projectCardContainer.appendChild(projectCardNewBlock);
+	const projectCardNewBlockText = document.createElement('p');
+	projectCardNewBlockText.innerHTML = '+';
+  projectCardNewBlock.appendChild(projectCardNewBlockText);
   
   // User Clicks Delete Card Button
   projectCardDeleteBtn.addEventListener('click', () => {
