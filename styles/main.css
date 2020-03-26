@@ -122,6 +122,26 @@ body {
   background-color: #ccc;
 }
 
+.add-project-block{
+	background-color: #ddd;
+	color: var(--secondary-font-color);
+	font-size: 80px;
+	text-align: center;
+	width: 95%;
+	height: 95%;
+	display: block;
+	margin: auto;
+}
+
+.add-project-block:hover{
+	background-color: #ccc;
+	cursor: pointer;
+}
+
+.add-project-block > p{
+	margin-top: 25%;
+}
+
 .hide-placeholder {
   position: absolute;
   top: 50%;
@@ -241,10 +261,6 @@ body {
   background-color: var(--card-body-color);
   color: var(--secondary-font-color);
   color: #000;
-}
-
-.project-card-body:empty:not(:focus):before {
-  content: attr(data-placeholder)
 }
 
 .add-card-body {
