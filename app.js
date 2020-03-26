@@ -22,12 +22,11 @@ function createNewCard(){
   projectCardTitleInput.placeholder = 'Enter a title...';
   projectCardTitle.appendChild(projectCardTitleInput);
   projectCardTitleInput.classList.add('editable');
-	projectCardTitleInput.id = 'projectCardTitleInput';
-	projectCardTitleInput.autofocus = true;
+  projectCardTitleInput.id = 'projectCardTitleInput';
+  projectCardTitleInput.autofocus = true;
 
   const projectCardDeleteBtn = document.createElement('div');
   projectCardDeleteBtn.classList.add('project-card-delete-btn');
-  // projectCardDeleteBtn.innerText = '-'; << No need for this, we have the icon
   projectCardTitle.appendChild(projectCardDeleteBtn);
 
   const projectCardEditBtn = document.createElement('div');
