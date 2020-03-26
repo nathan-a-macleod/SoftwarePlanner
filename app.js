@@ -19,7 +19,7 @@ function createNewCard(){
 
   const projectCardTitleInput = document.createElement('input');
   projectCardTitleInput.type = 'text';
-  projectCardTitleInput.placeholder = 'Enter a title...';
+  projectCardTitleInput.placeholder = 'Title text...';
   projectCardTitle.appendChild(projectCardTitleInput);
   projectCardTitleInput.classList.add('editable');
   projectCardTitleInput.id = 'projectCardTitleInput';
@@ -61,6 +61,20 @@ function createNewCard(){
   });
   projectCardContainer.classList.add('card-animate');
   cardsContainer.appendChild(projectCardContainer);
+	
+	// User Clicks To Add A New Block
+  projectCardNewBlock.addEventListener('click', ()=> {
+		// Runs the same code as it does when the user confirms edits
+    projectCardTitleInput.setAttribute('readonly', true);
+    projectCardTitleInput.classList.remove('editable');
+    projectCardBody.contentEditable = 'false';
+    projectCardBody.classList.remove('editable');
+    projectCardEditBtn.style.opacity = 1;
+    projectCardConfirmBtn.style.opacity = 0;
+		
+		projectCardNewBlock.classList.add('add-project-block-clicked');
+		//Then do other stuff like open up a menu where the user can click to add 'body text' or 'image'
+  })
 
   // User Clicks Edit Button
   projectCardEditBtn.addEventListener('click', ()=> {
