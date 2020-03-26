@@ -19,9 +19,11 @@ function createNewCard(){
 
   const projectCardTitleInput = document.createElement('input');
   projectCardTitleInput.type = 'text';
-  projectCardTitleInput.placeholder = 'Click to add text ->';
+  projectCardTitleInput.placeholder = 'Enter a title...';
   projectCardTitle.appendChild(projectCardTitleInput);
   projectCardTitleInput.classList.add('editable');
+	projectCardTitleInput.id = 'projectCardTitleInput';
+	projectCardTitleInput.autofocus = true;
 
   const projectCardDeleteBtn = document.createElement('div');
   projectCardDeleteBtn.classList.add('project-card-delete-btn');
@@ -58,6 +60,7 @@ function createNewCard(){
   projectCardEditBtn.addEventListener('click', ()=> {
     projectCardTitleInput.removeAttribute('readonly');
     projectCardTitleInput.classList.add('editable');
+		projectCardTitleInput.autofocus = true;
     projectCardBody.contentEditable = 'true';
     projectCardBody.classList.add('editable');
     projectCardEditBtn.style.opacity = 0.2;
