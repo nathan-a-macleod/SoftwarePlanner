@@ -90,6 +90,13 @@ body {
   bottom: 120px;
 }
 
+.grey-hr{
+	width: 70%;
+	height: 2px;
+	background-color: var(--main-blue-color);
+	margin: auto;
+}
+
 /* Main */
 .main-container {
   display: flex;
@@ -148,7 +155,6 @@ body {
 
 .add-project-block-clicked{
 	background-color: #fff;
-	color: #000;
 	font-size: 20px;
 	line-height: 90px;
 }
@@ -161,6 +167,9 @@ body {
 	background-color: transparent;
 	border: none;
 	width: 100%;
+	font-size: 20px;
+	color: var(--main-blue-color);
+	text-decoration: underline;
 }
 .add-project-block-clicked > button:hover{
 	cursor: pointer;
@@ -172,7 +181,7 @@ body {
 }
 
 .add-text-button{
-	margin-top: 110px;
+	margin-top: 50px;
 }
 
 .hide-placeholder {
@@ -194,6 +203,14 @@ body {
 
 .editable:focus{
   border: 2px solid rgb(115, 147, 230) !important;
+}
+
+.editable-2{
+  color: rgb(20,20,20) !important;
+  background-color: rgb(255, 255, 255) !important;
+	width: 60%;
+	margin-left: -5px;
+	border-radius: 3px;
 }
 
 #projectCardTitleInput{
@@ -282,7 +299,7 @@ body {
   outline: none;
   transition: all 0.4s ease;
 }
-.project-card-body {
+.project-card-body{
   width: 95%;
   font-size: 2rem;
   margin: 10px auto;
@@ -296,6 +313,22 @@ body {
   background-color: var(--card-body-color);
   color: var(--secondary-font-color);
   color: #000;
+}
+
+.projectCardNewBlock-text{
+  width: 95%;
+  font-size: 2rem;
+  margin: auto;
+  overflow-y: auto;
+  line-height: 1.2;
+	height: 215px;
+  padding: 5px;
+  outline: none;
+  transition: all 0.4s ease;
+  box-shadow: inset 1px 2px 4px rgba(20,20,20,0.3);
+  background-color: var(--card-body-color);
+  color: #000;
+	margin-top: -5px;
 }
 
 .add-card-body {
