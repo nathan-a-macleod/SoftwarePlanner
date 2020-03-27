@@ -1,6 +1,7 @@
 // Connect to DOM Elements
 const cardsContainer = document.querySelector('.cards-container');
 const placeholderCard = document.getElementById('placeholder-card');
+var addTextButtonClicked = false;
 
 // User clicks placeholderCard
 placeholderCard.addEventListener('click', e => {
@@ -45,6 +46,7 @@ function createNewCard(){
   projectCardEditBtn.style.opacity = 0.2;
   projectCardConfirmBtn.style.opacity = 1;
 	
+	/**/
   const projectCardNewBlock = document.createElement('div');
   projectCardNewBlock.classList.add('add-project-block');
   projectCardContainer.appendChild(projectCardNewBlock);
@@ -56,6 +58,9 @@ function createNewCard(){
   projectCardNewBlock.appendChild(addTextButton);
   addTextButton.innerHTML = 'Click to add more text...';
 	addTextButton.style.visibility = "hidden";
+  const greyHR = document.createElement('div');
+  greyHR.classList.add('grey-hr');
+  projectCardNewBlock.appendChild(greyHR);
 	const addImageButton = document.createElement('button');
 	addImageButton.classList.add('add-image-button');
 	projectCardNewBlock.appendChild(addImageButton);
@@ -72,20 +77,27 @@ function createNewCard(){
   projectCardContainer.classList.add('card-animate');
   cardsContainer.appendChild(projectCardContainer);
 	
-	// User Clicks To Add A New Block
-  projectCardNewBlock.addEventListener('click', ()=> {
-		// Runs the same code as it does when the user confirms edits
-    projectCardTitleInput.setAttribute('readonly', true);
-    projectCardTitleInput.classList.remove('editable');
-    projectCardBody.contentEditable = 'false';
-    projectCardBody.classList.remove('editable');
-    projectCardEditBtn.style.opacity = 1;
-    projectCardConfirmBtn.style.opacity = 0;
-		
-		projectCardNewBlock.classList.add('add-project-block-clicked');
-		//Display a menu where the user can click to add 'body text' or 'image'
-		addTextButton.style.visibility = "visible";
-		addImageButton.style.visibility = "visible";
+	if (addTextButtonClicked == false){
+		// User Clicks To Add A New Block
+		projectCardNewBlock.addEventListener('click', ()=> {
+			addTextButtonClicked = true;
+			
+			// Runs the same code as it does when the user confirms edits
+			projectCardTitleInput.setAttribute('readonly', true);
+			projectCardTitleInput.classList.remove('editable');
+			projectCardBody.contentEditable = 'false';
+			projectCardBody.classList.remove('editable');
+			projectCardEditBtn.style.opacity = 1;
+			projectCardConfirmBtn.style.opacity = 0;
+
+			projectCardNewBlock.classList.add('add-project-block-clicked'); // When the user clicks the button, it adds a new class to be reference in the css.
+			addTextButton.style.visibility = "visible";
+			addImageButton.style.visibility = "visible";
+		})
+	}
+	
+	addTextButton.addEventListener('click', ()=> {
+		// What It should do when the user clicks the button 
   })
 
   // User Clicks Edit Button
