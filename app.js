@@ -46,7 +46,7 @@ function createNewCard(){
   projectCardEditBtn.style.opacity = 0.2;
   projectCardConfirmBtn.style.opacity = 1;
 	
-	/**/
+	/*All part of the add-project-block button*/
   const projectCardNewBlock = document.createElement('div');
   projectCardNewBlock.classList.add('add-project-block');
   projectCardContainer.appendChild(projectCardNewBlock);
@@ -56,7 +56,7 @@ function createNewCard(){
   const addTextButton = document.createElement('button');
   addTextButton.classList.add('add-text-button');
   projectCardNewBlock.appendChild(addTextButton);
-  addTextButton.innerHTML = 'Click to add more text...';
+  addTextButton.innerHTML = 'Click to add a text block...';
 	addTextButton.style.visibility = "hidden";
   const greyHR = document.createElement('div');
   greyHR.classList.add('grey-hr');
@@ -64,9 +64,10 @@ function createNewCard(){
 	const addImageButton = document.createElement('button');
 	addImageButton.classList.add('add-image-button');
 	projectCardNewBlock.appendChild(addImageButton);
-	addImageButton.innerHTML = 'Click to add an image...';
+	addImageButton.innerHTML = 'Click to add an image block...';
 	addImageButton.style.visibility = "hidden";
-  
+	/*All part of the add-project-block button*/
+	
   // User Clicks Delete Card Button
   projectCardDeleteBtn.addEventListener('click', () => {
     if(confirm("Warning: You are about to delete this project card and everything inside it. Press OK to proceed, or cancel to cancel.")){
@@ -77,27 +78,49 @@ function createNewCard(){
   projectCardContainer.classList.add('card-animate');
   cardsContainer.appendChild(projectCardContainer);
 	
-	if (addTextButtonClicked == false){
-		// User Clicks To Add A New Block
-		projectCardNewBlock.addEventListener('click', ()=> {
-			addTextButtonClicked = true;
-			
-			// Runs the same code as it does when the user confirms edits
-			projectCardTitleInput.setAttribute('readonly', true);
-			projectCardTitleInput.classList.remove('editable');
-			projectCardBody.contentEditable = 'false';
-			projectCardBody.classList.remove('editable');
-			projectCardEditBtn.style.opacity = 1;
-			projectCardConfirmBtn.style.opacity = 0;
+	// User Clicks To Add A New Block
+	projectCardNewBlock.addEventListener('click', ()=> {
+		// Runs the same code as it does when the user confirms edits
+		projectCardTitleInput.setAttribute('readonly', true);
+		projectCardTitleInput.classList.remove('editable');
+		projectCardBody.contentEditable = 'false';
+		projectCardBody.classList.remove('editable');
+		projectCardEditBtn.style.opacity = 1;
+		projectCardConfirmBtn.style.opacity = 0;
 
-			projectCardNewBlock.classList.add('add-project-block-clicked'); // When the user clicks the button, it adds a new class to be reference in the css.
-			addTextButton.style.visibility = "visible";
-			addImageButton.style.visibility = "visible";
-		})
-	}
+		projectCardNewBlock.classList.add('add-project-block-clicked'); // When the user clicks the button, it adds a new class to be reference in the css.
+		addTextButton.style.visibility = "visible";
+		addImageButton.style.visibility = "visible";
+	})
 	
 	addTextButton.addEventListener('click', ()=> {
-		// What It should do when the user clicks the button 
+		console.log('Add a text block.');
+  })
+	
+	addImageButton.addEventListener('click', ()=> {
+		addTextButton.style.display = 'none';
+		greyHR.style.display = 'none';
+		addImageButton.style.display = 'none';
+		
+		var imageUpload = document.createElement("INPUT");
+		imageUpload.setAttribute("type", "file");
+		projectCardNewBlock.appendChild(imageUpload);
+		imageUpload.style.display = 'block';
+		
+		imageUpload.addEventListener('change', readURL, true);
+		imageUpload.click();
+		function readURL(){
+				var file = imageUpload.files[0];
+				var reader = new FileReader();
+				reader.onloadend = function(){
+						projectCardNewBlock.style.backgroundImage = "url(" + reader.result + ")";   
+						imageUpload.style.display = 'none';
+				}
+				if(file){
+						reader.readAsDataURL(file);
+				}else{
+				}
+		}
   })
 
   // User Clicks Edit Button
