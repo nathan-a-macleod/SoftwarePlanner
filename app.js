@@ -13,6 +13,9 @@ placeholderCard.addEventListener('click', e => {
 
 // User clicks to add more cards
 addProjectCardBtn.addEventListener('click', ()=> {
+	//document.getElementsByClassName('realClasssName').length
+	// Runs similar code to when the user clicks confirms edits:
+	
   createNewCard();
 })
 
@@ -79,6 +82,7 @@ function createNewCard(){
   projectCardDeleteBtn.addEventListener('click', () => {
     if(confirm("Warning: You are about to delete this project card and everything inside it. Press OK to proceed, or cancel to cancel.")){
       cardsContainer.removeChild(projectCardContainer);
+			
       // Check to make sure no cards are on screen
       if(cardsContainer.lastElementChild.className === 'hide-placeholder'){
         placeholderCard.classList.toggle('hide-placeholder');
