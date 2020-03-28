@@ -1,11 +1,18 @@
 // Connect to DOM Elements
 const cardsContainer = document.querySelector('.cards-container');
 const placeholderCard = document.getElementById('placeholder-card');
+const addProjectCardBtn = document.getElementById('add-project-card');
 var addTextButtonClicked = false;
 
 // User clicks placeholderCard
 placeholderCard.addEventListener('click', e => {
   placeholderCard.classList.toggle('hide-placeholder');
+  createNewCard();
+  addProjectCardBtn.style.opacity = 1;
+})
+
+// User clicks to add more cards
+addProjectCardBtn.addEventListener('click', ()=> {
   createNewCard();
 })
 
@@ -72,7 +79,11 @@ function createNewCard(){
   projectCardDeleteBtn.addEventListener('click', () => {
     if(confirm("Warning: You are about to delete this project card and everything inside it. Press OK to proceed, or cancel to cancel.")){
       cardsContainer.removeChild(projectCardContainer);
-      placeholderCard.classList.toggle('hide-placeholder');
+      // Check to make sure no cards are on screen
+      if(cardsContainer.lastElementChild.className === 'hide-placeholder'){
+        placeholderCard.classList.toggle('hide-placeholder');
+        addProjectCardBtn.style.opacity = 0;
+      }
     }
   });
   projectCardContainer.classList.add('card-animate');
