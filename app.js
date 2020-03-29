@@ -2,7 +2,7 @@
 const cardsContainer = document.querySelector('.cards-container');
 const placeholderCard = document.getElementById('placeholder-card');
 const addProjectCardBtn = document.getElementById('add-project-card');
-var addTextButtonClicked = false;
+var addLinkButtonClicked = false;
 
 // User clicks placeholderCard
 placeholderCard.addEventListener('click', e => {
@@ -13,9 +13,9 @@ placeholderCard.addEventListener('click', e => {
 
 // User clicks to add more cards
 addProjectCardBtn.addEventListener('click', ()=> {
-	//document.getElementsByClassName('realClasssName').length
-	// Runs similar code to when the user clicks confirms edits:
-	
+  //document.getElementsByClassName('realClasssName').length
+  // Runs similar code to when the user clicks confirms edits:
+  
   createNewCard();
 })
 
@@ -55,34 +55,34 @@ function createNewCard(){
   projectCardContainer.appendChild(projectCardBody);
   projectCardEditBtn.style.opacity = 0.2;
   projectCardConfirmBtn.style.opacity = 1;
-	
-	/*All part of the add-project-block button*/
+  
+  /*All part of the add-project-block button*/
   const projectCardNewBlock = document.createElement('div');
   projectCardNewBlock.classList.add('add-project-block');
   projectCardContainer.appendChild(projectCardNewBlock);
   const projectCardNewBlockText = document.createElement('p');
   projectCardNewBlockText.innerHTML = '+';
   projectCardNewBlock.appendChild(projectCardNewBlockText);
-  const addTextButton = document.createElement('button');
-  addTextButton.classList.add('add-text-button');
-  projectCardNewBlock.appendChild(addTextButton);
-  addTextButton.innerHTML = 'Click to add a text block...';
-	addTextButton.style.visibility = "hidden";
+  const addLinkButton = document.createElement('button');
+  addLinkButton.classList.add('add-link-button');
+  projectCardNewBlock.appendChild(addLinkButton);
+  addLinkButton.innerHTML = 'Click to link to some important sites...';
+  addLinkButton.style.visibility = "hidden";
   const greyHR = document.createElement('div');
   greyHR.classList.add('grey-hr');
   projectCardNewBlock.appendChild(greyHR);
-	const addImageButton = document.createElement('button');
-	addImageButton.classList.add('add-image-button');
-	projectCardNewBlock.appendChild(addImageButton);
-	addImageButton.innerHTML = 'Click to add an image block...';
-	addImageButton.style.visibility = "hidden";
-	/*All part of the add-project-block button*/
-	
+  const addImageButton = document.createElement('button');
+  addImageButton.classList.add('add-image-button');
+  projectCardNewBlock.appendChild(addImageButton);
+  addImageButton.innerHTML = 'Click to add an image block...';
+  addImageButton.style.visibility = "hidden";
+  /*All part of the add-project-block button*/
+  
   // User Clicks Delete Card Button
   projectCardDeleteBtn.addEventListener('click', () => {
     if(confirm("Warning: You are about to delete this project card and everything inside it. Press OK to proceed, or cancel to cancel.")){
       cardsContainer.removeChild(projectCardContainer);
-			
+      
       // Check to make sure no cards are on screen
       if(cardsContainer.lastElementChild.className === 'hide-placeholder'){
         placeholderCard.classList.toggle('hide-placeholder');
@@ -92,57 +92,62 @@ function createNewCard(){
   });
   projectCardContainer.classList.add('card-animate');
   cardsContainer.appendChild(projectCardContainer);
-	
-	// User Clicks To Add A New Block
-	projectCardNewBlock.addEventListener('click', ()=> {
-		// Runs the same code as it does when the user confirms edits
-		projectCardTitleInput.setAttribute('readonly', true);
-		projectCardTitleInput.classList.remove('editable');
-		projectCardBody.contentEditable = 'false';
-		projectCardBody.classList.remove('editable');
-		projectCardEditBtn.style.opacity = 1;
-		projectCardConfirmBtn.style.opacity = 0;
+  
+  // User Clicks To Add A New Block
+  projectCardNewBlock.addEventListener('click', ()=> {
+    // Runs the same code as it does when the user confirms edits
+    projectCardTitleInput.setAttribute('readonly', true);
+    projectCardTitleInput.classList.remove('editable');
+    projectCardBody.contentEditable = 'false';
+    projectCardBody.classList.remove('editable');
+    projectCardEditBtn.style.opacity = 1;
+    projectCardConfirmBtn.style.opacity = 0;
 
-		projectCardNewBlock.classList.add('add-project-block-clicked'); // When the user clicks the button, it adds a new class to be reference in the css.
-		addTextButton.style.visibility = "visible";
-		addImageButton.style.visibility = "visible";
-	})
-	
-	addTextButton.addEventListener('click', ()=> {
-		console.log('Add a text block.');
+    projectCardNewBlock.classList.add('add-project-block-clicked'); // When the user clicks the button, it adds a new class to be reference in the css.
+    addLinkButton.style.visibility = "visible";
+    addImageButton.style.visibility = "visible";
   })
-	
-	addImageButton.addEventListener('click', ()=> {
-		addTextButton.style.display = 'none';
-		greyHR.style.display = 'none';
-		addImageButton.style.display = 'none';
-		
-		var imageUpload = document.createElement("INPUT");
-		imageUpload.setAttribute("type", "file");
-		projectCardNewBlock.appendChild(imageUpload);
-		imageUpload.style.display = 'block';
-		
-		imageUpload.addEventListener('change', readURL, true);
-		imageUpload.click();
-		function readURL(){
-				var file = imageUpload.files[0];
-				var reader = new FileReader();
-				reader.onloadend = function(){
-						projectCardNewBlock.style.backgroundImage = "url(" + reader.result + ")";   
-						imageUpload.style.display = 'none';
-				}
-				if(file){
-						reader.readAsDataURL(file);
-				}else{
-				}
-		}
+  
+  addLinkButton.addEventListener('click', ()=> {
+    console.log('Link to some important sites.');
+    
+    // Get rid of everything else so you can't see it:
+    addLinkButton.style.display = 'none';
+    greyHR.style.display = 'none';
+    addImageButton.style.display = 'none';
+  })
+  
+  addImageButton.addEventListener('click', ()=> {
+    addLinkButton.style.display = 'none';
+    greyHR.style.display = 'none';
+    addImageButton.style.display = 'none';
+    
+    var imageUpload = document.createElement("INPUT");
+    imageUpload.setAttribute("type", "file");
+    projectCardNewBlock.appendChild(imageUpload);
+    imageUpload.style.display = 'block';
+    
+    imageUpload.addEventListener('change', readURL, true);
+    imageUpload.click();
+    function readURL(){
+        var file = imageUpload.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function(){
+            projectCardNewBlock.style.backgroundImage = "url(" + reader.result + ")";
+            imageUpload.style.display = 'none';
+        }
+        if(file){
+            reader.readAsDataURL(file);
+        }else{
+        }
+    }
   })
 
   // User Clicks Edit Button
   projectCardEditBtn.addEventListener('click', ()=> {
     projectCardTitleInput.removeAttribute('readonly');
     projectCardTitleInput.classList.add('editable');
-		projectCardTitleInput.focus();
+    projectCardTitleInput.focus();
     projectCardBody.contentEditable = 'true';
     projectCardBody.classList.add('editable');
     projectCardEditBtn.style.opacity = 0.2;
