@@ -199,6 +199,16 @@ body {
   margin-top: 50px;
 }
 
+.links{
+  width: 85% !important;
+  padding: 2px;
+  margin-left: 10px !important;
+  display: block !important;
+  margin-top: 10px !important;
+  float: left;
+  height: 30px;
+}
+
 .hide-placeholder {
   position: absolute;
   top: 50%;
