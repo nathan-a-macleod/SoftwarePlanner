@@ -3,6 +3,8 @@ const cardsContainer = document.querySelector('.cards-container');
 const placeholderCard = document.getElementById('placeholder-card');
 const addProjectCardBtn = document.getElementById('add-project-card');
 var addLinkButtonClicked = false;
+var linkInput;
+var linkImage;
 
 // User clicks placeholderCard
 placeholderCard.addEventListener('click', e => {
@@ -109,12 +111,31 @@ function createNewCard(){
   })
   
   addLinkButton.addEventListener('click', ()=> {
-    console.log('Link to some important sites.');
+    projectCardNewBlock.style.overflow = 'scroll';
+    projectCardNewBlock.style.paddingBottom = 8 + 'px';
     
     // Get rid of everything else so you can't see it:
     addLinkButton.style.display = 'none';
     greyHR.style.display = 'none';
     addImageButton.style.display = 'none';
+    
+    var addButton = document.createElement('button');
+    projectCardNewBlock.appendChild(addButton);
+    addButton.innerHTML = 'Add a link';
+    addButton.addEventListener('click', ()=> {
+      addLink();
+    });
+    
+    addLink();
+    
+    function addLink(){
+      linkInput = document.createElement('input');
+      projectCardNewBlock.appendChild(linkInput);
+      linkInput.placeholder = 'Paste an important link...';
+      linkInput.classList.add('links');
+      
+      addButton.innerHTML = 'Add another link';
+    }
   })
   
   addImageButton.addEventListener('click', ()=> {
