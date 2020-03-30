@@ -9,4 +9,5 @@ It’s unique because this will have the ability to do things that other website
 It's very simple: Download the project (clone it), unzip it, and open the 'index.html' file in your browser!
 
 # Contributing:
-Please feel free to fork this repo, change it, and do a pull request! There are usually some issues that need to be worked on, so you may want to look at them, and try and fix some of them. Just remember, please only fix ONE issue per pull request where it is possible. Before you fix an issue with a pull request, please make sure that it hasn't already been fixed, etc by looking at the comments!
+Please feel free to fork this repo, change it, and do a pull request! 
+There are usually some issues that need to be worked on, so you **may** want to look at them, and try and fix some of them (but if you don't want to work on one of the issues, then that's fine). Just remember, please only fix ONE issue per pull request where it is possible. Before you fix an issue with a pull request, please make sure that it hasn't already been fixed, etc by looking at the comments!
