@@ -5,6 +5,7 @@ const addProjectCardBtn = document.getElementById('add-project-card');
 var addLinkButtonClicked = false;
 var linkInput;
 var linkImage;
+var linksDIv;
 
 // User clicks placeholderCard
 placeholderCard.addEventListener('click', e => {
@@ -127,14 +128,24 @@ function createNewCard(){
     });
     
     addLink();
-    
+      
     function addLink(){
+      linksDiv = document.createElement('div');
+      projectCardNewBlock.appendChild(linksDiv);
+      //linksDiv.classList.add(linksDivClass);
+      linksDiv.classList.add('linksDiv');
+      
       linkInput = document.createElement('input');
-      projectCardNewBlock.appendChild(linkInput);
+      linksDiv.appendChild(linkInput);
       linkInput.placeholder = 'Paste an important link...';
       linkInput.classList.add('links');
       
+      linksImage = document.createElement('div');
+      linksDiv.appendChild(linksImage);
+      linksImage.classList.add('linksImage');
+      
       addButton.innerHTML = 'Add another link';
+      // Need to make the input and corrosponding button dissappear when you click the trash button.
     }
   })
   
