@@ -35,7 +35,7 @@ function createNewCard(){
   projectCardTitleInput.type = 'text';
   projectCardTitleInput.placeholder = 'Title text...';
   projectCardTitle.appendChild(projectCardTitleInput);
-  projectCardTitleInput.classList.add('editable');
+  projectCardTitleInput.classList.add('editable', 'card-editable');
   projectCardTitleInput.id = 'projectCardTitleInput';
   projectCardTitleInput.autofocus = true;
 
@@ -53,7 +53,7 @@ function createNewCard(){
   projectCardTitle.appendChild(projectCardConfirmBtn);
 
   const projectCardBody = document.createElement('div'); // I can't work out a way to add placeholder text to a content-editable div...
-  projectCardBody.classList.add('project-card-body', 'editable');
+  projectCardBody.classList.add('project-card-body', 'editable', 'card-editable');
   projectCardBody.contentEditable = 'true';
   projectCardContainer.appendChild(projectCardBody);
   projectCardEditBtn.style.opacity = 0.2;
@@ -184,6 +184,8 @@ function createNewCard(){
     projectCardBody.classList.add('editable');
     projectCardEditBtn.style.opacity = 0.2;
     projectCardConfirmBtn.style.opacity = 1;
+    projectCardTitleInput.classList.add('card-editable');
+    projectCardBody.classList.add('card-editable');
   })
 
   // User Confirms Edits
@@ -194,5 +196,28 @@ function createNewCard(){
     projectCardBody.classList.toggle('editable');
     projectCardEditBtn.style.opacity = 1;
     projectCardConfirmBtn.style.opacity = 0;
+    projectCardTitleInput.classList.remove('card-editable');
+    projectCardBody.classList.remove('card-editable');
   })
+
+  // Add animation to direct user to hit Edit button
+  projectCardTitleInput.addEventListener('click', ()=> {
+    if (!projectCardTitleInput.classList.contains('card-editable')){
+      triggerEditBtnAnimation();
+    }
+  })
+
+  projectCardBody.addEventListener('click', ()=> {
+    if (!projectCardBody.classList.contains('card-editable')){
+      triggerEditBtnAnimation();
+    }
+  })
+
+  function triggerEditBtnAnimation() {
+    projectCardEditBtn.classList.add('edit-btn-animate');
+
+      setTimeout(()=> {
+        projectCardEditBtn.classList.remove('edit-btn-animate');
+      }, 1000);
+  }
 }
