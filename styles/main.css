@@ -50,11 +50,35 @@ body {
   }
 }
 
+@keyframes editButtonShake {
+  0% {
+    transform: translate(-50%, -70%);
+  }
+  25% {
+    transform: translate(-50%, -30%);
+  }
+  50% {
+    transform: translate(-50%, -60%);
+  }
+  75% {
+    transform: translate(-50%, -40%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
 .card-animate {
   animation-name: enterLeft;
   animation-duration: 1s;
   animation-timing-function: cubic-bezier(.66,.07,.23,1.19);
   animation-fill-mode: backwards;
+}
+
+.edit-btn-animate {
+  animation-name: editButtonShake;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(.66,.07,.23,1.19);
 }
 
 /* Header */
