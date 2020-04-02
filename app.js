@@ -16,8 +16,7 @@ placeholderCard.addEventListener('click', e => {
 
 // User clicks to add more cards
 addProjectCardBtn.addEventListener('click', ()=> {
-  //document.getElementsByClassName('realClasssName').length
-  // Runs similar code to when the user clicks confirms edits:
+  // Runs similar code to when the user clicks to confirm edits but not for the most recent block:
   
   createNewCard();
 })
@@ -52,9 +51,9 @@ function createNewCard(){
   projectCardConfirmBtn.innerText = 'Confirm';
   projectCardTitle.appendChild(projectCardConfirmBtn);
 
-  const projectCardBody = document.createElement('div'); // I can't work out a way to add placeholder text to a content-editable div...
+  const projectCardBody = document.createElement('TEXTAREA'); // I can't work out a way to add placeholder text to a content-editable div...
   projectCardBody.classList.add('project-card-body', 'editable', 'card-editable');
-  projectCardBody.contentEditable = 'true';
+  projectCardBody.placeholder = 'Body text...';
   projectCardContainer.appendChild(projectCardBody);
   projectCardEditBtn.style.opacity = 0.2;
   projectCardConfirmBtn.style.opacity = 1;
@@ -111,6 +110,7 @@ function createNewCard(){
     addImageButton.style.visibility = "visible";
   })
   
+  // User clicks to add a series of links
   addLinkButton.addEventListener('click', ()=> {
     projectCardNewBlock.style.overflow = 'scroll';
     projectCardNewBlock.style.paddingBottom = 8 + 'px';
@@ -149,6 +149,7 @@ function createNewCard(){
     }
   })
   
+  // User clicks to add an image
   addImageButton.addEventListener('click', ()=> {
     addLinkButton.style.display = 'none';
     greyHR.style.display = 'none';
@@ -180,7 +181,8 @@ function createNewCard(){
     projectCardTitleInput.removeAttribute('readonly');
     projectCardTitleInput.classList.add('editable');
     projectCardTitleInput.focus();
-    projectCardBody.contentEditable = 'true';
+    projectCardBody.readOnly = 'false';
+    projectCardBody.removeAttribute('readonly');
     projectCardBody.classList.add('editable');
     projectCardEditBtn.style.opacity = 0.2;
     projectCardConfirmBtn.style.opacity = 1;
@@ -192,7 +194,7 @@ function createNewCard(){
   projectCardConfirmBtn.addEventListener('click', () => {
     projectCardTitleInput.setAttribute('readonly', true);
     projectCardTitleInput.classList.toggle('editable');
-    projectCardBody.contentEditable = 'false';
+    projectCardBody.readOnly = 'true';
     projectCardBody.classList.toggle('editable');
     projectCardEditBtn.style.opacity = 1;
     projectCardConfirmBtn.style.opacity = 0;
